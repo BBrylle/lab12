@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Attempt Details</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #f3e5f5, #fce4ec); /* Elegant gradient background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .main__container {
+            width: 100%;
+            max-width: 800px;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            box-sizing: border-box;
+        }
+        h2 {
+            color: #d81b60;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+        .details {
+            text-align: left;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #f8bbd0;
+            padding-bottom: 15px;
+        }
+        .details p {
+            font-size: 1.1em;
+            color: #333;
+            margin: 5px 0;
+        }
+        .questions {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .question {
+            background: #fff3f6;
+            border: 1px solid #f48fb1;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+        .choices {
+            margin-top: 10px;
+        }
+        .choice {
+            padding: 10px;
+            border-radius: 10px;
+            margin: 3px 0;
+            transition: background-color 0.2s;
+        }
+        .user-answer {
+            background-color: #ffeb3b;
+            font-weight: bold;
+        }
+        .correct-answer {
+            background-color: #c8e6c9;
+            font-weight: bold;
+        }
+        .score {
+            font-weight: bold;
+            color: #d81b60;
+            margin-top: 10px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #d81b60;
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .back-btn:hover {
+            background-color: #c2185b;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="main__container">
+        <h2>Exam Attempt Details</h2>
+
+        <div class="details">
+            <p><strong>Examinee Name:</strong> {{ complete_name }}</p>
+            <p><strong>Email:</strong> {{ email }}</p>
+            <p><strong>Exam Attempt Date:</strong> {{ attempt_date }}</p>
+            <p class="score"><strong>Total Score:</strong> {{ total_score }}</p>
+        </div>
+
+        <div class="questions">
+            <h3>Questions and Answers</h3>
+            {{#questions}}
+                <div class="question">
+                    <p><strong>Question:</strong> {{ question }}</p>
+                    <div class="choices">
+                        {{#choices}}
+                            <div class="choice {{#is_user_answer}}user-answer{{/is_user_answer}} {{#is_correct}}correct-answer{{/is_correct}}">
+                                <span>{{ letter }}. {{ choice }}</span>
+                            </div>
+                        {{/choices}}
+                        <p><strong>Your Answer:</strong> {{ user_answer }} <br>
+                        <strong>Correct Answer:</strong> {{ correct_answer }}</p>
+                    </div>
+                </div>
+            {{/questions}}
+        </div>
+
+        <a href="/examinees" class="back-btn">Back to Examinees</a>
+    </div>
+</body>
+</html>

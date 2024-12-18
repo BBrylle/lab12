@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height for centering */
+            margin: 0; /* Remove default margin */
+            background-color: #fce4ec; /* Light pink background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .main__container {
+            width: 100%;
+            max-width: 600px;
+            padding: 30px;
+            background: #ffffff; /* White background for the container */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box; /* Ensure padding doesn’t affect width */
+            text-align: center;
+        }
+        h2 {
+            color: #d81b60; /* Dark pink for the main title */
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+        h3 {
+            color: #343a40; /* Dark gray for questions */
+            margin-bottom: 20px;
+            font-size: 1.25em;
+            font-weight: 600; /* Bolder text for emphasis */
+        }
+        .choices {
+            margin-bottom: 25px;
+            text-align: left; /* Left-align choices */
+        }
+        label {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #f48fb1; /* Consistent soft pink border */
+            border-radius: 10px; /* Rounded corners */
+            margin-bottom: 10px;
+            transition: background-color 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+            transform: scale(1.2); /* Slightly larger radio button for clarity */
+        }
+        label:hover {
+            background-color: #f8bbd0; /* Light pink on hover */
+            border-color: #d81b60; /* Darker pink on hover */
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background-color: #d81b60; /* Dark pink button */
+            color: white;
+            border: none;
+            border-radius: 10px; /* Fully rounded button */
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #c2185b; /* Darker pink on hover */
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="main__container">
+        <h2>Question #{{ item_number }}</h2> <!-- Displaying question number -->
+        <h3>{{ question }}</h3> <!-- The question text -->
+
+        <div class="choices">
+            <form action="/exam" method="POST">
+                <input type="hidden" name="item_number" value="{{ item_number }}" /> <!-- Hidden field to keep track of question number -->
+                {{#choices}} <!-- Looping through the choices -->
+                    <label>
+                        <input type="radio" name="answer" value="{{ letter }}" required /> <!-- Each radio button for answer -->
+                        <span>{{ choice }}</span> <!-- Displaying the choice text -->
+                    </label>
+                {{/choices}}
+                <button type="submit">NEXT</button> <!-- Submit button for the next question -->
+            </form>
+        </div>
+    </div>
+</body>
+</html>

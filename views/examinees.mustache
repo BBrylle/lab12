@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examinees</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height for centering */
+            margin: 0; /* Remove default margin */
+            background-color: #fce4ec; /* Light pink background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .main__container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 30px;
+            background-color: #ffffff; /* White background for the container */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+            text-align: center;
+        }
+        h2 {
+            color: #d81b60; /* Dark pink for headings */
+            margin-bottom: 25px;
+            font-size: 2em; /* Larger heading */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        th {
+            background-color: #f8bbd0; /* Soft pink for header */
+            color: #495057;
+            font-weight: 600;
+        }
+        tr:hover {
+            background-color: #f1f3f5; /* Light gray on row hover */
+        }
+        .export-btn {
+            display: inline-block;
+            background-color: #d81b60; /* Dark pink button */
+            color: white;
+            border: none;
+            border-radius: 10px; /* Rounded button */
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s, transform 0.2s;
+            text-decoration: none;
+        }
+        .export-btn:hover {
+            background-color: #c2185b; /* Darker pink on hover */
+            transform: translateY(-2px);
+        }
+        .export-btn:focus {
+            outline: none; /* Remove outline on focus for cleaner design */
+        }
+    </style>
+</head>
+<body>
+    <div class="main__container">
+        <h2>Exam Attempts</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Attempt Date</th>
+                    <th>Examinee Name</th>
+                    <th>Number of Items</th>
+                    <th>Total Score</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#examAttempts}} <!-- Loop through exam attempts -->
+                    <tr>
+                        <td>{{ attempt_date }}</td>
+                        <td>{{ complete_name }}</td>
+                        <td>{{ exam_number_of_items }}</td>
+                        <td>{{ total_score }}</td>
+                        <td>
+                            <a href="/exam-attempts/{{ id }}" class="export-btn" title="Export to PDF">Export to PDF</a>
+                        </td>
+                    </tr>
+                {{/examAttempts}}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

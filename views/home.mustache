@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #f0e5f6, #f3e5f5); /* Soft gradient for a more elegant background */
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* Elegant font choice */
+        }
+        .main__container {
+            width: 85vw;
+            max-width: 750px;
+            padding: 50px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-size: 1.2em;
+            border: 1px solid #e0e0e0;
+        }
+        h2 {
+            color: #6a1b9a; /* Elegant purple for headings */
+            margin-bottom: 30px;
+            font-size: 2.4em;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 18px 30px;
+            background-color: #6a1b9a;
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        a:hover {
+            background-color: #9c4dcc;
+            transform: translateY(-6px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .main__container {
+                padding: 20px;
+                font-size: 1em;
+            }
+            h2 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+            a {
+                padding: 15px 25px;
+                font-size: 18px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="main__container">
+        <h2>Welcome to the Exam Portal</h2>
+        <a href="/register">Start Your Registration</a>
+    </div>
+</body>
+</html>
